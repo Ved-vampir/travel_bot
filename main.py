@@ -1,3 +1,4 @@
+import os
 import collections
 
 from telegram.ext import Filters
@@ -90,5 +91,5 @@ def discuss_bad_python(name):
 
 
 if __name__ == "__main__":
-    dialog_bot = DialogBot(sys.argv[1], dialog)
+    dialog_bot = DialogBot(os.getenv("token"), dialog)
     dialog_bot.start()
