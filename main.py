@@ -13,6 +13,8 @@ class DialogBot(object):
         handler = MessageHandler(Filters.text | Filters.command, self.handle_message)
         self.updater.dispatcher.add_handler(handler)  # ставим обработчик всех текстовых сообщений
         self.handlers = collections.defaultdict(generator)  # заводим мапу "id чата -> генератор"
+        port = int(os.getenv('PORT', default=8000))
+        self.updater.start_webhook(port=port)
 
     def start(self):
         self.updater.start_polling()
